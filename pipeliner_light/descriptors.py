@@ -64,5 +64,5 @@ def rdkit_descriptors(molecule, options=None):
 
     return descriptors
 
-#mapping descriptors to there functions
+#mapping descriptors to there function
 feat_dict = {"ECFP": ecfp, "DESCS": rdkit_descriptors}
