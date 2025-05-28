@@ -1,12 +1,16 @@
+'''
+this part create a small framework to instantiate scallers dans estimator with lightgbm
+'''
+
 from lightgbm import LGBMRegressor
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 
-
+#makes a list shorten by a treshold
 def select_from_importances(importances, threshold=0):
     selected_ids = [i for i, imp in enumerate(importances) if imp >= threshold]
     return selected_ids
 
-
+#variable mapping
 lgbm_reg = 'lgbm_reg'
 lgbm_class = 'lgbm_class'
 
@@ -19,15 +23,15 @@ scalers_dict = {
     'minmax': MinMaxScaler
 }
 
-
+#create a StandardScarler
 def spawn_scaler(scaler):
     return scalers_dict[scaler]()
 
-
+#cree an instance of the LGBMRegressor
 def spawn_estimator(estimator, params):
     return estimators_dict[estimator](**params)
 
-
+#initiate the parameters
 default_params = {
     lgbm_reg: {'colsample_bytree': 1, 'n_jobs': -1, 'n_estimators': 1000,
                'learning_rate': 0.05, 'subsample': 1, 'num_leaves': 31, 'reg_alpha': 0.0,
