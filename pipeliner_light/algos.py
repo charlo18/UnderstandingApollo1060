@@ -1,11 +1,11 @@
 '''
-this part create a small framework to instantiate scallers dans estimator with lightgbm
+this part create a small framework to instantiate scallers and estimator with lightgbm
 '''
 
 from lightgbm import LGBMRegressor
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 
-#makes a list shorten by a treshold
+#makes a list shorter with a treshold
 def select_from_importances(importances, threshold=0):
     selected_ids = [i for i, imp in enumerate(importances) if imp >= threshold]
     return selected_ids

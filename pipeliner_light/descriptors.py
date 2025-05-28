@@ -2,22 +2,24 @@ import os
 
 from rdkit.Chem import Descriptors, MolToSmiles, AllChem
 
+#get the directory path to open the descriptors_list file
 current_path = os.path.dirname(os.path.abspath(__file__))
 descriptors_list = []
 with open(os.path.join(current_path, 'files', 'descriptors_list.txt'), "r") as f:
     for line in f:
         descriptors_list.append(line.strip())
 
+#create a dictionnary with the descriptor list
 descriptors_dict = dict(Descriptors.descList)
 
-
+#add the features into list
 def featurize_molecule(mol, features):
     features_list = []
     for feature in features:
         features_list.extend(feat_dict[feature['type']](mol, feature))
     return features_list
 
-
+#return a 3 column array(molecule,radius,length)
 def ecfp(molecule, options):
     return [x for x in AllChem.GetMorganFingerprintAsBitVect(
         molecule, options['radius'], options['length'])]

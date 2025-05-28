@@ -2,7 +2,7 @@
 pandas
 numpy
 tqdm
-scikit-learn
+scikit-learn #Scikit-learn 0.22 supported Python 3.5-3.8.
 """
 Note that there are no supported ways to load a model trained with a different version of scikit-learn. While using skops.io, joblib, pickle,
 or cloudpickle, models saved using one version of scikit-learn might load in other versions, however, this is entirely unsupported and inadvisable. It should also be kept in mind that operations performed on such data could give different and unexpected results, or even crash your Python process.

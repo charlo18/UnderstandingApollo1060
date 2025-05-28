@@ -1,5 +1,5 @@
 '''
-this part normalise the molecule to the smiles format and suppress some abnormal molecule
+this part normalise the molecule to the smiles format and suppress some abnormal data
 '''
 
 import os
