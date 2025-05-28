@@ -1,0 +1,17 @@
+name: mon_projet
+channels:
+  - conda-forge
+  - rdkit
+  - defaults
+dependencies:
+  - python=3.7.3
+  - pandas
+  - numpy
+  - scikit-learn=0.22
+  - rdkit=2019.03.1
+  - lightgbm=2.3.0
+  - joblib=0.14.0
+  - tqdm
+  - pip
+  - pip:
+      - molvs

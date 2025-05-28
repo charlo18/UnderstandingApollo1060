@@ -91,7 +91,7 @@ class SMol:
         self.features_names = np.array(features_names)
         self.features_values = np.array(features_values)
 
-    #create a dictionnary data
+    #create a data dictionnary
     @property
     def features(self):
         return {feature_name: features_value for feature_name, features_value in

@@ -3,7 +3,27 @@ pandas
 numpy
 tqdm
 scikit-learn
+"""
+Note that there are no supported ways to load a model trained with a different version of scikit-learn. While using skops.io, joblib, pickle,
+or cloudpickle, models saved using one version of scikit-learn might load in other versions, however, this is entirely unsupported and inadvisable. It should also be kept in mind that operations performed on such data could give different and unexpected results, or even crash your Python process.
+In order to rebuild a similar model with future versions of scikit-learn, additional metadata should be saved along the pickled model:
+The training data, e.g. a reference to an immutable snapshot
+The Python source code used to generate the model
+The versions of scikit-learn and its dependencies
+The cross validation score obtained on the training data"""
 rdkit
 lightgbm
 molvs
 joblib
+"""
+joblib uses the pickle package and requires the same environment as the training environment which is :
+python==3.7.3
+pandas
+numpy
+tqdm
+scikit-learn==0.22
+rdkit==2019.03.1
+lightgbm==2.3.0
+molvs
+joblib==0.14.0
+"""
