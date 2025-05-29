@@ -65,23 +65,35 @@ class ClassicPipe:
 
     @classmethod
     def load(cls, model_folder):
+        #initialisation of dictonnaries
         loader = {}
         fitted_estimators_perf = {"train": [], "val": []}
+
+        #init lists
         fitted_estimators = []
         fitted_selectors = []
         fitted_scalers = []
 
-        #gets every values in the performances.csv files and cut the name row
+        #gets the names of each row and puts it into a list 
         perf_df = pd.read_csv(os.path.join(model_folder, 'performance.csv'))
+
+        #removing space after the values
+        perf_df.columns = perf_df.columns.str.strip()
+        perf_df['set'] = perf_df['set'].astype(str).str.strip()
+
         metrics = list(perf_df.columns.values)[1:]
 
-        #i is the index, row is the data
+        #in the performance.csv file, there is a column call set
+        #this code verifiy this column which contain either train or val
+        #those are 2 dictionnaries which are compose of other dictionnaries who have for keys the values in metrics
+        #(adjusted_r2 ,r2 ,p_corr ,k_tau ,rmse ,mae) each key is map to all the value of is column in the perfomance.csv file
         for i, row in perf_df.iterrows():
             try:
-                #adding metrics values into an array
                 fitted_estimators_perf[row['set']].append({metric: row[metric] for metric in metrics})
+                #if there is no set in file, skip
             except KeyError:
                 pass
+
 
         #loading data from predicted_training_set
         cv_predicted_df = pd.read_csv(os.path.join(model_folder, 'cv_predicted_training_set.csv'))
