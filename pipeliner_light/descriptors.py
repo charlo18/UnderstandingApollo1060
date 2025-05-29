@@ -2,7 +2,7 @@
 this file implement 2 main routines:
 one for ecfp, and one for rdkit_descriptors
 They both have the same goal of encoding descriptors automatically
-featurize_molecule create a dictionnary that depends on the type of the feature.
+featurize_molecule create a dictionnary that depends on the type of the feature (ECFP,DESCS).
 This file also implements headers for the descriptors display"""
 import os
 
@@ -64,5 +64,5 @@ def rdkit_descriptors(molecule, options=None):
 
     return descriptors
 
-#mapping descriptors to there function
+#mapping feature type to there function
 feat_dict = {"ECFP": ecfp, "DESCS": rdkit_descriptors}
