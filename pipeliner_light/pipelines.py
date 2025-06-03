@@ -121,7 +121,7 @@ class ClassicPipe:
                 if args_dict['feature_selection'] is not None:
                     selector = np.load(os.path.join(model_folder, 'model_{!s}'.format(i), 'selector.npy'))
                 
-                #make add the data to a list for each model
+                #add the data to a list for each model
                     fitted_selectors.append(selector)
                 fitted_scalers.append(scaler) #either a StandardScaler or a MinMaxScaler
                 fitted_estimators.append(estimator) #either a LGBMRegressor or LGBMClassifier
